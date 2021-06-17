@@ -133,8 +133,6 @@ $(function() {
     }
   });
 
-  // function toggle() {
-  
   $('.stock-banner__wrap-svg').click(function(e) {
     e.preventDefault();
     
@@ -144,6 +142,24 @@ $(function() {
       passwordInput.type = 'text'
       :
       passwordInput.type = 'password';
+  });
+
+  // JSON.parse()
+  const cookieStorage = localStorage.getItem('cookie');
+  console.log('cookieStorage!!!: ', cookieStorage);
+  // console.log('1111')
+  if (cookieStorage) {
+    
+  }
+
+  // const getCookie = document.querySelector('.cookie');
+  // mainWrapper.classList.add('cookie--active');
+
+  // const productData = JSON.parse(localStorage.getItem('cookie'));
+  // localStorage.setItem('product', JSON.stringify(data));
+
+  $('.cookie__btn').click(function (e) {
+    console.log('22222');
   });
 });
 
