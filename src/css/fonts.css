@@ -1,0 +1,31 @@
+@font-face {
+  font-weight: 300;
+  font-style: normal;
+  font-family: 'DaxlinePro';
+  src: local('DaxlinePro-Light'), local('Aeroport-Bold'),
+      url('../fonts/DaxlinePro-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-weight: 400;
+  font-style: normal;
+  font-family: 'DaxlinePro';
+  src: local('DaxlinePro-Regular'), local('Aeroport-Regular'),
+      url('../fonts/DaxlinePro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-weight: 500;
+  font-style: normal;
+  font-family: 'DaxlinePro';
+  src: local('DaxlinePro-Medium'), local('Aeroport-Bold'),
+      url('../fonts/DaxlinePro-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-weight: 700;
+  font-style: normal;
+  font-family: 'DaxlinePro';
+  src: local('DaxlinePro-Bold'), local('Aeroport-Bold'),
+      url('../fonts/DaxlinePro-Bold.ttf') format('truetype');
+}

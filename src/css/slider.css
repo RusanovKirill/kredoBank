@@ -1,0 +1,56 @@
+.lSSlideOuter {
+
+  .lsGrab {
+    cursor: move;
+  }
+}
+
+.lSSlide {
+  height: auto !important;
+  transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  transition-duration: inherit !important;
+}
+
+#gallery {
+  display: flex;
+	overflow: hidden;
+
+  .lslide > *,
+  .clone > * {
+    transition: 0.5s ease 0.25s;
+  }
+
+  .clone.active > *,
+  .lslide.active > *,
+  .lslide._active > * {
+    transition: 0.5s ease 0.75s;
+  }
+}
+
+.wrapper-btn{
+	display: flex;
+}
+
+.slider{
+
+	&__btn{
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 0.3rem;
+		/* background-color: var(--color-base-text-grey); */
+		background-color: var(--color-base-blue);
+		display: flex;
+		justify-content: center;
+    align-items: center;
+
+		svg {
+			width: 0.8rem;
+			height: 1.5rem;
+		}
+
+		&--next{
+			transform: rotate(180deg);
+			margin-left: 1.5rem;
+		}
+	}
+}

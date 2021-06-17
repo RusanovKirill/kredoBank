@@ -1,0 +1,18 @@
+:root {
+  --color-base-white: #fff;
+  --color-base-card-border: #E2E3E4;
+  --color-base-text: #313131;
+  --color-base-text-grey: #E8EAED;
+  --color-base-bg-grey: #F9F9F9;
+  --color-base-timer-bg: #E8EDF4;
+  --color-base-card-title: #121212;
+  --color-base-header: #F7F7F7;
+  --color-base-blue: #054E99;
+  --color-base-dark: #000000;
+  --color-base-hint: #E28E3E;
+  --color-base-error: #C32D23;
+  --color-base-semi-light: #FCFCFC;
+  --wrapper: 156rem;
+  --header-height: 9rem;
+  --header-height-mobile: 6rem;
+}
