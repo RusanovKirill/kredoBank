@@ -68,6 +68,7 @@ $(function() {
   $('.stock-banner__btn').click(function(e) {
     e.preventDefault();
 
+    const isCheckedInput = document.getElementById('c1');
     const input = document.querySelector('.cc-number-input');
     const tegErrorForm = document.querySelector('.stock-banner__form');
     const mainWrapper = document.querySelector('.stock-banner__right');
@@ -76,7 +77,7 @@ $(function() {
 
     const textHTMLEmpty = '<p class="stock-banner__field-empty">Заповнить поле</p>';
 
-    if (!input.value.length) {
+    if (!input.value.length || !isCheckedInput.checked) {
       tegInputWrapper.classList.add('stock-banner__wrap-input--active');
       appendHTML.innerHTML = textHTMLEmpty;
 
@@ -97,7 +98,6 @@ $(function() {
           }
         },
         error: function(er) {
-          console.log('er: ', er);
           tegErrorForm.classList.add('stock-banner__form-error');
           tegInputWrapper.classList.remove('stock-banner__wrap-input--active');
         }
@@ -119,8 +119,6 @@ $(function() {
       passwordInput.type = 'password';
     }
   });
-
-  
   
   // Popup cookie
 
