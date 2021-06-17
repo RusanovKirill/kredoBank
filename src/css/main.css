@@ -8,6 +8,10 @@ body, html {
   }
 }
 
+.hide.hide {
+  display: none;
+}
+
 .mt{
   margin-top: 17rem;
 
@@ -272,17 +276,14 @@ body, html {
 
 .card {
   z-index: 2;
-  overflow: hidden;
   margin-bottom: 6rem;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
   background-color: var(--color-base-white);
   box-sizing: border-box;
 
   &__border{
-    display: flex;
-    cursor: pointer;
     position: relative;
-    z-index: 1;
+    display: flex;
     overflow: hidden;
 
     &:after{
@@ -302,7 +303,6 @@ body, html {
   &__img{
     width: 78rem;
     object-fit: cover;
-    border-radius: 0.5rem 0.5rem 0 0;
   }
 
   &__block-text{
@@ -539,6 +539,7 @@ body, html {
   }
 
   &__info{
+    height: 100%;
     padding: 3.5rem 5rem 2rem 4.5rem;
     display: flex;
     flex-direction: column;
@@ -1645,15 +1646,16 @@ body, html {
   }
 
   &__accordion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     font-style: normal;
     font-weight: 500;
     font-size: 2.6rem;
     line-height: 4rem;
     color: var(--color-base-card-title);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 3rem 3rem 3rem 4rem;
     border-bottom: 1px solid var(--color-base-card-border);
     cursor: pointer;
@@ -1687,12 +1689,14 @@ body, html {
     border-bottom: 1px solid var(--color-base-card-border);
   }
 
-  &__accordion-body{
-    transition: .4s;
-    max-height: 0;
+  &__accordion-body {
+    display: none;
+    width: 100%;
+    /* max-height: 0; */
+    text-align-last: left;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    width: 100%;
+    /* transition: .4s; */
 
     p{
       font-style: normal;
@@ -1700,7 +1704,7 @@ body, html {
       font-size: 2rem;
       line-height: 3.2rem;
       color: var(--color-base-card-title);
-      padding: 0rem 0 4rem 4rem;
+      padding: 2rem 0 2rem 0;
     }
 
     &--active{
@@ -1799,10 +1803,11 @@ body, html {
   &::after{
     top: 0;
     z-index: -1;
+    top: -5%;
     right: -50%;
     content: '';
     width: 100%;
-    height: 100%;
+    height: 110%;
     position: absolute;
     background-repeat: no-repeat;
     background-image: url('/img/big-arrow.svg');
@@ -1811,26 +1816,27 @@ body, html {
   &::before{
     top: 0;
     z-index: -1;
-    right: -62%;
+    top: -5%;
+    right: -74%;
     content: '';
     width: 100%;
-    height: 100%;
+    height: 110%;
     position: absolute;
     background-repeat: no-repeat;
     background-image: url('/img/second-arrow.svg');
   }
 
-  &__left{
+  &__left {
     width: 50%;
 
-    img{
+    img {
       width: 78rem;
       height: 100%;
       object-fit: cover;
     }
   }
 
-  &__right{
+  &__right {
     width: 50%;
     padding-left: 6rem;
     padding-bottom: 3rem;
@@ -2555,40 +2561,40 @@ body, html {
 
 /* Animation border card */
 .draw-border {
-  box-shadow: inset 0 0 0 1px var(--color-base-card-border);
-  color: var(--color-base-card-border);
-  transition: color 0.25s 0.0833333333s;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid var(--color-base-card-border);
+  color: var(--color-base-card-border);
+  /* box-shadow: inset 0 0 0 1px var(--color-base-card-border); */
+  transition: color 0.25s 0.0833333333s;
 }
 
 .draw-border::before,
 .draw-border::after {
-  border: 0 solid transparent;
+  border: 1px solid transparent;
   box-sizing: border-box;
   content: '';
   pointer-events: none;
   position: absolute;
   width: 0;
   height: 0;
-  bottom: 0;
-  right: 0;
+  bottom: -1px;
+  right: -1px;
   z-index: 2;
 }
 
-.draw-border::before {
-  border-bottom-width: 1px;
-  border-left-width: 1px;
-  border-bottom-left-radius: 0.5rem;
-  border-left-radius: 0.5rem;
-  border-right-radius: 0.5rem;
+.draw-border:hover::before {
+  border-bottom-color: var(--color-base-hint);
+  border-left-color: var(--color-base-hint);
+  border-radius: 5px;
 }
 
-.draw-border::after {
-  border-top-width: 1px;
-  border-right-width: 1px;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  border-right-radius: 0.5rem;
+.draw-border:hover::after {
+  border-top-color: var(--color-base-hint);
+  border-right-color: var(--color-base-hint);
+  border-radius: 5px;
 }
 
 .draw-border:hover {
@@ -2596,10 +2602,9 @@ body, html {
 }
 
 .draw-border:hover::before, .draw-border:hover::after {
-  border-color: var(--color-base-hint);
   transition: border-color 0s, width 0.25s, height 0.25s;
-  width: 100%;
-  height: 100%;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
 }
 
 .draw-border:hover::before {
