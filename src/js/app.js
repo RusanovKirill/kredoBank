@@ -133,14 +133,47 @@ $(function() {
     localStorage.setItem('cookie', true);
     $('#cookie').addClass('hide');
   });
+
+  var countDownDate = new Date('Jan 5, 2022 15:37:25').getTime();
+
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    var timerHTML = `<div class="timer__block">
+        <time class="timer__count">${days}</time>
+        <p class="timer__string">днiв</p>
+      </div>
+      <div class="timer__block">
+        <time class="timer__count">${hours}</time>
+        <p class="timer__string">годин</p>
+      </div>
+      <div class="timer__block">
+        <time class="timer__count">${minutes}</time>
+         <p class="timer__string">хвилин</p>
+      </div>`;
+
+    $('#timer').html(timerHTML);
+
+    if (distance < 0) {
+      clearInterval(x);
+      $('#timer').html('EXPIRED');
+    }
+  }, 1000);
 });
 
 // after scroll hide btn
 jQuery(window).scroll(function() {
-  if (jQuery(this).scrollTop()>0) {
-    jQuery('.header-mobile__btn').fadeOut();  
-  } else {
-    jQuery('.header-mobile__btn').fadeIn();
+  if (window.screen.width < 700) {
+    if (jQuery(this).scrollTop() > 0) {
+      jQuery('.header-mobile__btn').fadeOut();  
+    } else {
+      jQuery('.header-mobile__btn').fadeIn();
+    } 
   }
 });
 
