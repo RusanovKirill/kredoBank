@@ -107,7 +107,25 @@ $(function() {
     }
   });
 
-  // input number mask
+  function formUserExists() {
+    let wrapperHTML = document.querySelector('.stock-banner__right');
+
+    wrapperHTML.classList.add('stock-banner__right-user');
+
+    wrapperHTML.classList.remove('stock-banner__right-registration');
+    wrapperHTML.classList.remove('stock-banner__right-finish');
+  };
+
+  function formFinish() {
+    let wrapperHTML = document.querySelector('.stock-banner__right');
+
+    wrapperHTML.classList.add('stock-banner__right-finish');
+
+    wrapperHTML.classList.remove('stock-banner__right-user');
+    wrapperHTML.classList.remove('stock-banner__right-registration');
+  };
+
+  // Input number mask
   $('#cc-number-input').mask('AAAA AAAA AAAA AAAA');
 
   $('.stock-banner__wrap-svg').click(function(e) {
@@ -123,7 +141,6 @@ $(function() {
   });
   
   // Popup cookie
-
   var checkCookie = localStorage.getItem('cookie');
   if (!checkCookie) {
     $('#cookie').removeClass('hide');
@@ -134,6 +151,7 @@ $(function() {
     $('#cookie').addClass('hide');
   });
 
+  // Timer
   var countDownDate = new Date('Jan 5, 2022 15:37:25').getTime();
 
   var x = setInterval(function() {
@@ -166,7 +184,7 @@ $(function() {
   }, 1000);
 });
 
-// after scroll hide btn
+// After scroll hide btn
 jQuery(window).scroll(function() {
   if (window.screen.width < 700) {
     if (jQuery(this).scrollTop() > 0) {
