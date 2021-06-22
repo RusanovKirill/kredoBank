@@ -210,6 +210,7 @@ body, html {
 
     &::before{
       width: 2rem;
+      z-index: 99;
     }
 
     .header-mobile{
@@ -225,11 +226,28 @@ body, html {
   }
 }
 
+.header-mobile__btn.scroll {
+  transform: translateY(-100%);
+  z-index: -1;
+}
+
 .header-mobile{
   display: none;
   width: 100%;
   height: 100%;
   position: relative;
+  z-index: 99;
+
+  &::after {
+    content: '';
+    width: calc(100% + 2rem);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background-color: var(--color-base-header);
+  }
 
   &__blue{
     height: 100%;
@@ -294,6 +312,8 @@ body, html {
     font-size: 1.8rem;
     text-align: center;
     position: absolute;
+    transition: .3s ease-in-out;
+    z-index: 5;
 
     color: var(--color-base-semi-light);
     
@@ -770,12 +790,14 @@ body, html {
         justify-content: space-between;
 
         a{
-          transition:.3s ease-in-out;
+
+          svg path {
+            transition:.3s ease-in-out;
+          }
 
           &:hover{
             svg path {
               fill: var(--color-base-hint);
-              transition:.3s ease-in-out;
             }
           }
         }
@@ -790,6 +812,11 @@ body, html {
     text-decoration-line: underline;
     color: var(--color-base-white);
     margin-bottom: 4rem;
+    transition:.3s ease-in-out;
+
+    &:hover{
+      color: var(--color-base-hint);
+    }
   }
 
   &__content{
@@ -807,6 +834,11 @@ body, html {
     text-align: center;
     color: var(--color-base-white);
     margin-bottom: 1rem;
+    transition:.3s ease-in-out;
+
+    &:hover{
+      color: var(--color-base-hint);
+    }
   }
 
   &__text{
@@ -816,6 +848,11 @@ body, html {
     line-height: 2.8rem;
     text-align: center;
     color: var(--color-base-white);
+    transition:.3s ease-in-out;
+
+    &:hover{
+      color: var(--color-base-hint);
+    }
   }
 
   &__ul {
@@ -834,6 +871,11 @@ body, html {
           font-size: 2rem;
           line-height: 3.2rem;
           color: var(--color-base-white);
+          transition: .3s ease-in-out;
+
+          &:hover{
+            color: var(--color-base-hint);
+          }
         }
       }
     }
@@ -862,6 +904,11 @@ body, html {
     text-decoration-line: underline;
     color: var(--color-base-white);
     margin-left: 4rem;
+    transition:.3s ease-in-out;
+
+    &:hover{
+      color: var(--color-base-hint);
+    }
   }
 
   &__header{
@@ -912,19 +959,30 @@ body, html {
 
     &__social{
       margin: 3rem 0;
+      justify-content: flex-start;
+
+      li {
+        margin-right: 2.5rem;
+      }
     }
 
     &__copyright{
       font-size: 1.6rem;
       white-space: nowrap;
+      margin-left: 0;
     }
 
-    &__header svg{
-      width: 16.2rem;
-      height: 5.8rem;
+    &__header  {
+      justify-content: space-between;
+
+      svg {
+        width: 13.2rem;
+        height: 5.8rem;
+      }
     }
 
     &__col{
+      width: 100%;
 
       &:last-child {
         .footer__text{
@@ -2324,9 +2382,19 @@ body, html {
     padding-bottom: 4rem;
 
     &:after{
-      right: -5%;
-      top: 0;
-      height: 200%
+      width: 150%;
+      height: 100%;
+      background-size: cover;
+      left: -19%;
+      top: 0%;
+    }
+    
+    &:before {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      left: 65%;
+      top: 2%;
     }
 
     &__left,

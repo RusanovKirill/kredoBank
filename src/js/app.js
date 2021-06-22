@@ -128,16 +128,22 @@ $(function() {
   // Input number mask
   $('#cc-number-input').mask('AAAA AAAA AAAA AAAA');
 
+  let valInput;
+  let toggleEye;
+
   $('.stock-banner__wrap-svg').click(function(e) {
     e.preventDefault();
-    const passwordInput = document.querySelector('.cc-number-input');
 
-    if(passwordInput.type === 'password') {
-      passwordInput.type = 'text';
+    let pass = '';
+    let symbol = '*';
+
+    const passwordInput = document.querySelector('.cc-number-input');
+    const val = passwordInput.value;
+
+    for (let i = 0; i < val.length; i++) {
+      pass += symbol;
     }
-    else {
-      passwordInput.type = 'password';
-    }
+    $('#cc-number-input').val(pass);
   });
   
   // Popup cookie
@@ -174,25 +180,39 @@ $(function() {
         <time class="timer__count">${minutes}</time>
          <p class="timer__string">хвилин</p>
       </div>`;
+    
+    var timerExpired = `<div class="timer__block">
+        <time class="timer__count">0</time>
+        <p class="timer__string">днiв</p>
+      </div>
+      <div class="timer__block">
+        <time class="timer__count">0</time>
+        <p class="timer__string">годин</p>
+      </div>
+      <div class="timer__block">
+        <time class="timer__count">0</time>
+         <p class="timer__string">хвилин</p>
+      </div>`;
 
     $('#timer').html(timerHTML);
 
     if (distance < 0) {
       clearInterval(x);
-      $('#timer').html('EXPIRED');
+      $('#timer').html(timerExpired);
     }
   }, 1000);
+
+  if ($('.header-mobile__btn')) {
+    var prevScrolled = 0;
+    $(window).scroll(function() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var direction = winScroll - prevScrolled;
+      if (direction > 0) {
+        $('.header-mobile__btn').addClass('scroll');
+      } else {
+        $('.header-mobile__btn').removeClass('scroll');
+      }
+      prevScrolled = winScroll;
+    });
+  };
 });
-
-// After scroll hide btn
-jQuery(window).scroll(function() {
-  if (window.screen.width < 700) {
-    if (jQuery(this).scrollTop() > 0) {
-      jQuery('.header-mobile__btn').fadeOut();  
-    } else {
-      jQuery('.header-mobile__btn').fadeIn();
-    } 
-  }
-});
-
-
