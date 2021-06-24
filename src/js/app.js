@@ -158,49 +158,56 @@ $(function() {
   });
 
   // Timer
-  var countDownDate = new Date('Jan 5, 2022 15:37:25').getTime();
-
-  var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-    var timerHTML = `<div class="timer__block">
-        <time class="timer__count">${days}</time>
-        <p class="timer__string">днiв</p>
-      </div>
-      <div class="timer__block">
-        <time class="timer__count">${hours}</time>
-        <p class="timer__string">годин</p>
-      </div>
-      <div class="timer__block">
-        <time class="timer__count">${minutes}</time>
-         <p class="timer__string">хвилин</p>
-      </div>`;
+  $('.timer').each(function() {
+    var $this = $(this);
+    var countDownDate = Date.now() + Number($this.attr('data-time')) || 0;
     
-    var timerExpired = `<div class="timer__block">
-        <time class="timer__count">0</time>
-        <p class="timer__string">днiв</p>
-      </div>
-      <div class="timer__block">
-        <time class="timer__count">0</time>
-        <p class="timer__string">годин</p>
-      </div>
-      <div class="timer__block">
-        <time class="timer__count">0</time>
-         <p class="timer__string">хвилин</p>
-      </div>`;
+    var tick = function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+  
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  
+      var timerHTML = `<div class="timer__block">
+          <time class="timer__count">${days}</time>
+          <p class="timer__string">днiв</p>
+        </div>
+        <div class="timer__block">
+          <time class="timer__count">${hours}</time>
+          <p class="timer__string">годин</p>
+        </div>
+        <div class="timer__block">
+          <time class="timer__count">${minutes}</time>
+           <p class="timer__string">хвилин</p>
+        </div>`;
+      
+      var timerExpired = `<div class="timer__block">
+          <time class="timer__count">0</time>
+          <p class="timer__string">днiв</p>
+        </div>
+        <div class="timer__block">
+          <time class="timer__count">0</time>
+          <p class="timer__string">годин</p>
+        </div>
+        <div class="timer__block">
+          <time class="timer__count">0</time>
+           <p class="timer__string">хвилин</p>
+        </div>`;
+  
+      $this.html(timerHTML);
+  
+      if (distance < 0) {
+        clearInterval(x);
+        $this.html(timerExpired);
+      }
+    };
 
-    $('#timer').html(timerHTML);
+    tick();
+    var x = setInterval(tick, 5000);
 
-    if (distance < 0) {
-      clearInterval(x);
-      $('#timer').html(timerExpired);
-    }
-  }, 1000);
+  });
 
   if ($('.header-mobile__btn')) {
     var prevScrolled = 0;

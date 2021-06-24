@@ -850,7 +850,7 @@ body, html {
     color: var(--color-base-white);
     transition:.3s ease-in-out;
 
-    &:hover{
+    a&:hover{
       color: var(--color-base-hint);
     }
   }
@@ -2382,10 +2382,10 @@ body, html {
     padding-bottom: 4rem;
 
     &:after{
-      width: 150%;
+      width: 130%;
       height: 100%;
       background-size: cover;
-      left: -19%;
+      left: -30%;
       top: 0%;
     }
     
